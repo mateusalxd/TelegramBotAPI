@@ -2,8 +2,8 @@
   "name": "telegram-bot-api",
   "version": "1.0.1",
   "description": "Biblioteca com funcionalidades básicas da API de Bot do Telegram",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/telegram-api.js",
+  "types": "lib/telegram-api.d.ts",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
