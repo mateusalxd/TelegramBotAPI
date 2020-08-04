@@ -1,7 +1,7 @@
 import { Agent, request, RequestOptions } from 'https';
 import { IncomingMessage } from 'http';
 import { URL } from 'url';
-import { Recurso, APIResponse } from './tipos';
+import { APIResponse } from './tipos-internos';
 
 export default class Requisicao {
   private static agente = new Agent({
@@ -14,7 +14,7 @@ export default class Requisicao {
   };
   private url: URL;
 
-  constructor(private token: string, recurso?: Recurso) {
+  constructor(private token: string, recurso?: string) {
     if (!token) {
       throw new Error('É necessário informar o token do bot');
     }
@@ -63,14 +63,14 @@ export default class Requisicao {
             reject(erro);
           }
         });
+
+        resposta.on('error', (erro) => reject(erro));
       });
 
-      requisicao.on('error', (erro) => {
-        reject(erro);
-      });
+      requisicao.on('error', (erro) => reject(erro));
 
       if (corpoRequisicao) {
-        requisicao.write(corpoRequisicao);
+        requisicao.write(Buffer.from(JSON.stringify(corpoRequisicao)));
       }
 
       requisicao.end();
