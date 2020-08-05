@@ -1,6 +1,6 @@
 {
   "name": "telegram-bot-api",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Biblioteca com funcionalidades básicas da API de Bot do Telegram",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
