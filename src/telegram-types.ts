@@ -66,7 +66,7 @@ export type GetUpdatesParams = {
    */
   timeout?: number;
   /*
-   * A JSON-serialized list of the update types you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all updates regardless of type (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the getUpdates, so unwanted updates may be received for a short period of time.
+   * A JSON-serialized list of the update types you want your bot to receive. For example, specify ["message", "edited_channel_post", "callback_query"] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all updates regardless of type (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the getUpdates, so unwanted updates may be received for a short period of time.
    */
   allowed_updates?: string[];
 };
@@ -85,14 +85,13 @@ export type SetWebhookParams = {
    */
   max_connections?: number;
   /*
-   * A JSON-serialized list of the update types you want your bot to receive. For example, specify [“message”, “edited_channel_post”, “callback_query”] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all updates regardless of type (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the setWebhook, so unwanted updates may be received for a short period of time.
+   * A JSON-serialized list of the update types you want your bot to receive. For example, specify ["message", "edited_channel_post", "callback_query"] to only receive updates of these types. See Update for a complete list of available update types. Specify an empty list to receive all updates regardless of type (default). If not specified, the previous setting will be used.Please note that this parameter doesn't affect updates created before the call to the setWebhook, so unwanted updates may be received for a short period of time.
    */
   allowed_updates?: string[];
 };
 
 /*
- * Contains information about the current status of a webhook.All types used in the Bot API responses are represented as JSON-objects.It is safe to use 32-bit signed integers for storing all Integer fields unless otherwise noted.
- * Optional fields may be not returned when irrelevant.
+ * Contains information about the current status of a webhook.
  */
 export type WebhookInfo = {
   /*
@@ -176,7 +175,7 @@ export type Chat = {
    */
   id: number;
   /*
-   * Type of chat, can be either “private”, “group”, “supergroup” or “channel”
+   * Type of chat, can be either "private", "group", "supergroup" or "channel"
    */
   type: string;
   /*
@@ -350,7 +349,7 @@ export type Message = {
    */
   dice?: Dice;
   /*
-   * Optional. Message is a game, information about the game. More about games »
+   * Optional. Message is a game, information about the game
    */
   game?: Game;
   /*
@@ -410,15 +409,15 @@ export type Message = {
    */
   pinned_message?: Message;
   /*
-   * Optional. Message is an invoice for a payment, information about the invoice. More about payments »
+   * Optional. Message is an invoice for a payment, information about the invoice
    */
   invoice?: Invoice;
   /*
-   * Optional. Message is a service message about a successful payment, information about the payment. More about payments »
+   * Optional. Message is a service message about a successful payment, information about the payment
    */
   successful_payment?: SuccessfulPayment;
   /*
-   * Optional. The domain name of the website on which the user has logged in. More about Telegram Login »
+   * Optional. The domain name of the website on which the user has logged in
    */
   connected_website?: string;
   /*
@@ -436,7 +435,7 @@ export type Message = {
  */
 export type MessageEntity = {
   /*
-   * Type of the entity. Can be “mention” (@username), “hashtag” (#hashtag), “cashtag” ($USD), “bot_command” (/start@jobs_bot), “url” (https://telegram.org), “email” (do-not-reply@telegram.org), “phone_number” (+1-212-555-0123), “bold” (bold text), “italic” (italic text), “underline” (underlined text), “strikethrough” (strikethrough text), “code” (monowidth string), “pre” (monowidth block), “text_link” (for clickable text URLs), “text_mention” (for users without usernames)
+   * Type of the entity. Can be "mention" (@username), "hashtag" (#hashtag), "cashtag" ($USD), "bot_command" (/start@jobs_bot), "url" (https://telegram.org), "email" (do-not-reply@telegram.org), "phone_number" (+1-212-555-0123), "bold" (bold text), "italic" (italic text), "underline" (underlined text), "strikethrough" (strikethrough text), "code" (monowidth string), "pre" (monowidth block), "text_link" (for clickable text URLs), "text_mention" (for users without usernames)
    */
   type: string;
   /*
@@ -448,15 +447,15 @@ export type MessageEntity = {
    */
   length: number;
   /*
-   * Optional. For “text_link” only, url that will be opened after user taps on the text
+   * Optional. For "text_link" only, url that will be opened after user taps on the text
    */
   url?: string;
   /*
-   * Optional. For “text_mention” only, the mentioned user
+   * Optional. For "text_mention" only, the mentioned user
    */
   user?: User;
   /*
-   * Optional. For “pre” only, the programming language of the entity text
+   * Optional. For "pre" only, the programming language of the entity text
    */
   language?: string;
 };
@@ -726,7 +725,7 @@ export type Dice = {
    */
   emoji: string;
   /*
-   * Value of the dice, 1-6 for “” and “” base emoji, 1-5 for “” base emoji
+   * Value of the dice, 1-6 for "dice" and "dartboard" base emoji, 1-5 for "basketball" base emoji
    */
   value: number;
 };
@@ -792,7 +791,7 @@ export type Poll = {
    */
   is_anonymous: boolean;
   /*
-   * Poll type, currently can be “regular” or “quiz”
+   * Poll type, currently can be "regular" or "quiz"
    */
   type: string;
   /*
@@ -856,7 +855,7 @@ export type Venue = {
    */
   foursquare_id?: string;
   /*
-   * Optional. Foursquare type of the venue. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+   * Optional. Foursquare type of the venue. (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
    */
   foursquare_type?: string;
 };
@@ -921,7 +920,7 @@ export type ReplyKeyboardMarkup = {
 };
 
 /*
- * This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button. Optional fields request_contact, request_location, and request_poll are mutually exclusive.Note: request_contact and request_location options will only work in Telegram versions released after 9 April, 2016. Older clients will display unsupported message.Note: request_poll option will only work in Telegram versions released after 23 January, 2020. Older clients will display unsupported message.
+ * This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button. Optional fields request_contact, request_location, and request_poll are mutually exclusive.
  */
 export type KeyboardButton = {
   /*
@@ -967,7 +966,7 @@ export type ReplyKeyboardRemove = {
 };
 
 /*
- * This object represents an inline keyboard that appears right next to the message it belongs to.Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will display unsupported message.
+ * This object represents an inline keyboard that appears right next to the message it belongs to.
  */
 export type InlineKeyboardMarkup = {
   /*
@@ -997,7 +996,7 @@ export type InlineKeyboardButton = {
    */
   callback_data?: string;
   /*
-   * Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. Can be empty, in which case just the bot's username will be inserted.Note: This offers an easy way for users to start using your bot in inline mode when they are currently in a private chat with it. Especially useful when combined with switch_pm… actions – in this case the user will be automatically returned to the chat they switched from, skipping the chat selection screen.
+   * Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. Can be empty, in which case just the bot's username will be inserted.Note: This offers an easy way for users to start using your bot in inline mode when they are currently in a private chat with it. Especially useful when combined with switch_pm... actions – in this case the user will be automatically returned to the chat they switched from, skipping the chat selection screen.
    */
   switch_inline_query?: string;
   /*
@@ -1015,7 +1014,8 @@ export type InlineKeyboardButton = {
 };
 
 /*
- * This object represents a parameter of the inline keyboard button used to automatically authorize a user. Serves as a great replacement for the Telegram Login Widget when the user is coming from Telegram. All the user needs to do is tap/click a button and confirm that they want to log in:Telegram apps support these buttons as of version 5.7.
+ * This object represents a parameter of the inline keyboard button used to automatically authorize a user. Serves as a great replacement for the Telegram Login Widget when the user is coming from Telegram. All the user needs to do is tap/click a button and confirm that they want to log in:
+ * Telegram apps support these buttons as of version 5.7.
  * Sample bot: @discussbot
  */
 export type LoginUrl = {
@@ -1039,7 +1039,6 @@ export type LoginUrl = {
 
 /*
  * This object represents an incoming callback query from a callback button in an inline keyboard. If the button that originated the query was attached to a message sent by the bot, the field message will be present. If the button was attached to a message sent via the bot (in inline mode), the field inline_message_id will be present. Exactly one of the fields data or game_short_name will be present.
- * NOTE: After the user presses a callback button, Telegram clients will display a progress bar until you call answerCallbackQuery. It is, therefore, necessary to react by calling answerCallbackQuery even if no notification to the user is needed (e.g., without specifying any of the optional parameters).
  */
 export type CallbackQuery = {
   /*
@@ -1073,14 +1072,8 @@ export type CallbackQuery = {
 };
 
 /*
-* Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the user has selected the bot's message and tapped 'Reply'). This can be extremely useful if you want to create user-friendly step-by-step interfaces without having to sacrifice privacy mode.
-* Example: A poll bot for groups runs in privacy mode (only receives commands, replies to its messages and mentions). There could be two ways to create a new poll:
-
-Explain the user how to send a command with parameters (e.g. /newpoll question answer1 answer2). May be appealing for hardcore users but lacks modern day polish.
-Guide the user through a step-by-step process. 'Please send me your question', 'Cool, now let's add the first answer option', 'Great. Keep adding answer options, then send /done when you're ready'.
-
-The last option is definitely more attractive. And if you use ForceReply in your bot's questions, it will receive the user's answers even if it only receives replies, commands and mentions — without any extra work for the user.
-*/
+ * Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the user has selected the bot's message and tapped 'Reply'). This can be extremely useful if you want to create user-friendly step-by-step interfaces without having to sacrifice privacy mode.
+ */
 export type ForceReply = {
   /*
    * Shows reply interface to the user, as if they manually selected the bot's message and tapped 'Reply'
@@ -1123,7 +1116,7 @@ export type ChatMember = {
    */
   user: User;
   /*
-   * The member's status in the chat. Can be “creator”, “administrator”, “member”, “restricted”, “left” or “kicked”
+   * The member's status in the chat. Can be "creator", "administrator", "member", "restricted", "left" or "kicked"
    */
   status: string;
   /*
@@ -1276,7 +1269,7 @@ export type InputMediaPhoto = {
    */
   type: string;
   /*
-   * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending Files »
+   * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name
    */
   media: string;
   /*
@@ -1298,11 +1291,11 @@ export type InputMediaVideo = {
    */
   type: string;
   /*
-   * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending Files »
+   * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name
    */
   media: string;
   /*
-   * Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files »
+   * Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>
    */
   thumb?: InputFile | string;
   /*
@@ -1340,11 +1333,11 @@ export type InputMediaAnimation = {
    */
   type: string;
   /*
-   * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending Files »
+   * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name
    */
   media: string;
   /*
-   * Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files »
+   * Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>
    */
   thumb?: InputFile | string;
   /*
@@ -1378,11 +1371,11 @@ export type InputMediaAudio = {
    */
   type: string;
   /*
-   * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending Files »
+   * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name
    */
   media: string;
   /*
-   * Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files »
+   * Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>
    */
   thumb?: InputFile | string;
   /*
@@ -1416,11 +1409,11 @@ export type InputMediaDocument = {
    */
   type: string;
   /*
-   * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass “attach://<file_attach_name>” to upload a new one using multipart/form-data under <file_attach_name> name. More info on Sending Files »
+   * File to send. Pass a file_id to send a file that exists on the Telegram servers (recommended), pass an HTTP URL for Telegram to get a file from the Internet, or pass "attach://<file_attach_name>" to upload a new one using multipart/form-data under <file_attach_name> name
    */
   media: string;
   /*
-   * Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files »
+   * Optional. Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>
    */
   thumb?: InputFile | string;
   /*
@@ -1434,8 +1427,7 @@ export type InputMediaDocument = {
 };
 
 /*
- * This object represents the contents of a file to be uploaded. Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.Sending files There are three ways to send files (photos, stickers, audio, media, etc.):Sending by file_idSending by URLInline mode objectsObjects and methods used in the inline mode are described in the Inline mode section.
- * All methods in the Bot API are case-insensitive. We support GET and POST HTTP methods. Use either URL query string or application/json or application/x-www-form-urlencoded or multipart/form-data for passing parameters in Bot API requests.On successful call, a JSON-object containing the result will be returned.
+ * This object represents the contents of a file to be uploaded. Must be posted using multipart/form-data in the usual way that files are uploaded via the browser.
  */
 export type InputFile = any;
 
@@ -1495,7 +1487,7 @@ export type SendPhotoParams = {
    */
   chat_id: number | string;
   /*
-   * Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data. More info on Sending Files »
+   * Photo to send. Pass a file_id as String to send a photo that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a photo from the Internet, or upload a new photo using multipart/form-data
    */
   photo: InputFile | string;
   /*
@@ -1526,7 +1518,7 @@ export type SendAudioParams = {
    */
   chat_id: number | string;
   /*
-   * Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
+   * Audio file to send. Pass a file_id as String to send an audio file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an audio file from the Internet, or upload a new one using multipart/form-data
    */
   audio: InputFile | string;
   /*
@@ -1550,7 +1542,7 @@ export type SendAudioParams = {
    */
   title?: string;
   /*
-   * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files »
+   * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>
    */
   thumb?: InputFile | string;
   /*
@@ -1573,11 +1565,11 @@ export type SendDocumentParams = {
    */
   chat_id: number | string;
   /*
-   * File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
+   * File to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data
    */
   document: InputFile | string;
   /*
-   * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files »
+   * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>
    */
   thumb?: InputFile | string;
   /*
@@ -1608,7 +1600,7 @@ export type SendVideoParams = {
    */
   chat_id: number | string;
   /*
-   * Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data. More info on Sending Files »
+   * Video to send. Pass a file_id as String to send a video that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a video from the Internet, or upload a new video using multipart/form-data
    */
   video: InputFile | string;
   /*
@@ -1624,7 +1616,7 @@ export type SendVideoParams = {
    */
   height?: number;
   /*
-   * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files »
+   * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>
    */
   thumb?: InputFile | string;
   /*
@@ -1659,7 +1651,7 @@ export type SendAnimationParams = {
    */
   chat_id: number | string;
   /*
-   * Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data. More info on Sending Files »
+   * Animation to send. Pass a file_id as String to send an animation that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get an animation from the Internet, or upload a new animation using multipart/form-data
    */
   animation: InputFile | string;
   /*
@@ -1675,7 +1667,7 @@ export type SendAnimationParams = {
    */
   height?: number;
   /*
-   * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files »
+   * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>
    */
   thumb?: InputFile | string;
   /*
@@ -1706,7 +1698,7 @@ export type SendVoiceParams = {
    */
   chat_id: number | string;
   /*
-   * Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
+   * Audio file to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data
    */
   voice: InputFile | string;
   /*
@@ -1741,7 +1733,7 @@ export type SendVideoNoteParams = {
    */
   chat_id: number | string;
   /*
-   * Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data. More info on Sending Files ». Sending video notes by a URL is currently unsupported
+   * Video note to send. Pass a file_id as String to send a video note that exists on the Telegram servers (recommended) or upload a new video using multipart/form-data Sending video notes by a URL is currently unsupported
    */
   video_note: InputFile | string;
   /*
@@ -1753,7 +1745,7 @@ export type SendVideoNoteParams = {
    */
   length?: number;
   /*
-   * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass “attach://<file_attach_name>” if the thumbnail was uploaded using multipart/form-data under <file_attach_name>. More info on Sending Files »
+   * Thumbnail of the file sent; can be ignored if thumbnail generation for the file is supported server-side. The thumbnail should be in JPEG format and less than 200 kB in size. A thumbnail's width and height should not exceed 320. Ignored if the file is not uploaded using multipart/form-data. Thumbnails can't be reused and can be only uploaded as a new file, so you can pass "attach://<file_attach_name>" if the thumbnail was uploaded using multipart/form-data under <file_attach_name>
    */
   thumb?: InputFile | string;
   /*
@@ -1892,7 +1884,7 @@ export type SendVenueParams = {
    */
   foursquare_id?: string;
   /*
-   * Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+   * Foursquare type of the venue, if known. (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
    */
   foursquare_type?: string;
   /*
@@ -1962,7 +1954,7 @@ export type SendPollParams = {
    */
   is_anonymous?: boolean;
   /*
-   * Poll type, “quiz” or “regular”, defaults to “regular”
+   * Poll type, "quiz" or "regular", defaults to "regular"
    */
   type?: string;
   /*
@@ -2013,7 +2005,7 @@ export type SendDiceParams = {
    */
   chat_id: number | string;
   /*
-   * Emoji on which the dice throw animation is based. Currently, must be one of “”, “”, or “”. Dice can have values 1-6 for “” and “”, and values 1-5 for “”. Defaults to “”
+   * Emoji on which the dice throw animation is based. Currently, must be one of "dice", "dartboard", or "basketball". Dice can have values 1-6 for "dice" and "dartboard", and values 1-5 for "basketball". Defaults to "dice"
    */
   emoji?: string;
   /*
@@ -2540,7 +2532,7 @@ export type StickerSet = {
  */
 export type MaskPosition = {
   /*
-   * The part of the face relative to which the mask should be placed. One of “forehead”, “eyes”, “mouth”, or “chin”.
+   * The part of the face relative to which the mask should be placed. One of "forehead", "eyes", "mouth", or "chin".
    */
   point: string;
   /*
@@ -2563,7 +2555,7 @@ export type SendStickerParams = {
    */
   chat_id: number | string;
   /*
-   * Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
+   * Sticker to send. Pass a file_id as String to send a file that exists on the Telegram servers (recommended), pass an HTTP URL as a String for Telegram to get a .WEBP file from the Internet, or upload a new one using multipart/form-data
    */
   sticker: InputFile | string;
   /*
@@ -2593,7 +2585,7 @@ export type UploadStickerFileParams = {
    */
   user_id: number;
   /*
-   * PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. More info on Sending Files »
+   * PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px
    */
   png_sticker: InputFile;
 };
@@ -2604,7 +2596,7 @@ export type CreateNewStickerSetParams = {
    */
   user_id: number;
   /*
-   * Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only english letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in “_by_<bot username>”. <bot_username> is case insensitive. 1-64 characters.
+   * Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only english letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in "_by_<bot username>". <bot_username> is case insensitive. 1-64 characters.
    */
   name: string;
   /*
@@ -2612,7 +2604,7 @@ export type CreateNewStickerSetParams = {
    */
   title: string;
   /*
-   * PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
+   * PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data
    */
   png_sticker?: InputFile | string;
   /*
@@ -2643,7 +2635,7 @@ export type AddStickerToSetParams = {
    */
   name: string;
   /*
-   * PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files »
+   * PNG image with the sticker, must be up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data
    */
   png_sticker?: InputFile | string;
   /*
@@ -2688,7 +2680,7 @@ export type SetStickerSetThumbParams = {
    */
   user_id: number;
   /*
-   * A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/animated_stickers#technical-requirements for animated sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data. More info on Sending Files ». Animated sticker set thumbnail can't be uploaded via HTTP URL.
+   * A PNG image with the thumbnail, must be up to 128 kilobytes in size and have width and height exactly 100px, or a TGS animation with the thumbnail up to 32 kilobytes in size; see https://core.telegram.org/animated_stickers#technical-requirements for animated sticker technical requirements. Pass a file_id as a String to send a file that already exists on the Telegram servers, pass an HTTP URL as a String for Telegram to get a file from the Internet, or upload a new one using multipart/form-data Animated sticker set thumbnail can't be uploaded via HTTP URL.
    */
   thumb?: InputFile | string;
 };
@@ -2912,7 +2904,7 @@ export type InlineQueryResultGif = {
    */
   thumb_url: string;
   /*
-   * Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
+   * Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg"
    */
   thumb_mime_type?: string;
   /*
@@ -2970,7 +2962,7 @@ export type InlineQueryResultMpeg4Gif = {
    */
   thumb_url: string;
   /*
-   * Optional. MIME type of the thumbnail, must be one of “image/jpeg”, “image/gif”, or “video/mp4”. Defaults to “image/jpeg”
+   * Optional. MIME type of the thumbnail, must be one of "image/jpeg", "image/gif", or "video/mp4". Defaults to "image/jpeg"
    */
   thumb_mime_type?: string;
   /*
@@ -3013,7 +3005,7 @@ export type InlineQueryResultVideo = {
    */
   video_url: string;
   /*
-   * Mime type of the content of video url, “text/html” or “video/mp4”
+   * Mime type of the content of video url, "text/html" or "video/mp4"
    */
   mime_type: string;
   /*
@@ -3059,7 +3051,7 @@ export type InlineQueryResultVideo = {
 };
 
 /*
- * Represents a link to an MP3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
+ * Represents a link to an MP3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
  */
 export type InlineQueryResultAudio = {
   /*
@@ -3105,7 +3097,7 @@ export type InlineQueryResultAudio = {
 };
 
 /*
- * Represents a link to a voice recording in an .OGG container encoded with OPUS. By default, this voice recording will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the the voice message.Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
+ * Represents a link to a voice recording in an .OGG container encoded with OPUS. By default, this voice recording will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the the voice message.
  */
 export type InlineQueryResultVoice = {
   /*
@@ -3147,7 +3139,7 @@ export type InlineQueryResultVoice = {
 };
 
 /*
- * Represents a link to a file. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file. Currently, only .PDF and .ZIP files can be sent using this method.Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
+ * Represents a link to a file. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file. Currently, only .PDF and .ZIP files can be sent using this method.
  */
 export type InlineQueryResultDocument = {
   /*
@@ -3175,7 +3167,7 @@ export type InlineQueryResultDocument = {
    */
   document_url: string;
   /*
-   * Mime type of the content of the file, either “application/pdf” or “application/zip”
+   * Mime type of the content of the file, either "application/pdf" or "application/zip"
    */
   mime_type: string;
   /*
@@ -3205,7 +3197,7 @@ export type InlineQueryResultDocument = {
 };
 
 /*
- * Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the location.Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
+ * Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the location.
  */
 export type InlineQueryResultLocation = {
   /*
@@ -3255,7 +3247,7 @@ export type InlineQueryResultLocation = {
 };
 
 /*
- * Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the venue.Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
+ * Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the venue.
  */
 export type InlineQueryResultVenue = {
   /*
@@ -3287,7 +3279,7 @@ export type InlineQueryResultVenue = {
    */
   foursquare_id?: string;
   /*
-   * Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+   * Optional. Foursquare type of the venue, if known. (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
    */
   foursquare_type?: string;
   /*
@@ -3313,7 +3305,7 @@ export type InlineQueryResultVenue = {
 };
 
 /*
- * Represents a contact with a phone number. By default, this contact will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the contact.Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
+ * Represents a contact with a phone number. By default, this contact will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the contact.
  */
 export type InlineQueryResultContact = {
   /*
@@ -3363,7 +3355,7 @@ export type InlineQueryResultContact = {
 };
 
 /*
- * Represents a Game.Note: This will only work in Telegram versions released after October 1, 2016. Older clients will not display any inline results if a game result is among them.
+ * Represents a Game.
  */
 export type InlineQueryResultGame = {
   /*
@@ -3503,7 +3495,7 @@ export type InlineQueryResultCachedMpeg4Gif = {
 };
 
 /*
- * Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the sticker.Note: This will only work in Telegram versions released after 9 April, 2016 for static stickers and after 06 July, 2019 for animated stickers. Older clients will ignore them.
+ * Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the sticker.
  */
 export type InlineQueryResultCachedSticker = {
   /*
@@ -3529,7 +3521,7 @@ export type InlineQueryResultCachedSticker = {
 };
 
 /*
- * Represents a link to a file stored on the Telegram servers. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file.Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
+ * Represents a link to a file stored on the Telegram servers. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file.
  */
 export type InlineQueryResultCachedDocument = {
   /*
@@ -3613,7 +3605,7 @@ export type InlineQueryResultCachedVideo = {
 };
 
 /*
- * Represents a link to a voice message stored on the Telegram servers. By default, this voice message will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the voice message.Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
+ * Represents a link to a voice message stored on the Telegram servers. By default, this voice message will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the voice message.
  */
 export type InlineQueryResultCachedVoice = {
   /*
@@ -3651,7 +3643,7 @@ export type InlineQueryResultCachedVoice = {
 };
 
 /*
- * Represents a link to an MP3 audio file stored on the Telegram servers. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.Note: This will only work in Telegram versions released after 9 April, 2016. Older clients will ignore them.
+ * Represents a link to an MP3 audio file stored on the Telegram servers. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.
  */
 export type InlineQueryResultCachedAudio = {
   /*
@@ -3754,7 +3746,7 @@ export type InputVenueMessageContent = {
    */
   foursquare_id?: string;
   /*
-   * Optional. Foursquare type of the venue, if known. (For example, “arts_entertainment/default”, “arts_entertainment/aquarium” or “food/icecream”.)
+   * Optional. Foursquare type of the venue, if known. (For example, "arts_entertainment/default", "arts_entertainment/aquarium" or "food/icecream".)
    */
   foursquare_type?: string;
 };
@@ -3782,7 +3774,7 @@ export type InputContactMessageContent = {
 };
 
 /*
- * Represents a result of an inline query that was chosen by the user and sent to their chat partner.Note: It is necessary to enable inline feedback via @Botfather in order to receive these objects in updates.Your bot can accept payments from Telegram users. Please see the introduction to payments for more details on the process and how to set up payments for your bot. Please note that users will need Telegram v.4.0 or higher to use payments (released on May 18, 2017).
+ * Represents a result of an inline query that was chosen by the user and sent to their chat partner.
  */
 export type ChosenInlineResult = {
   /*
@@ -4103,7 +4095,7 @@ export type ShippingQuery = {
 };
 
 /*
- * This object contains information about an incoming pre-checkout query.Telegram Passport is a unified authorization method for services that require personal identification. Users can upload their documents once, then instantly share their data with services that require real-world ID (finance, ICOs, etc.). Please see the manual for details.
+ * This object contains information about an incoming pre-checkout query.
  */
 export type PreCheckoutQuery = {
   /*
@@ -4177,39 +4169,39 @@ export type PassportFile = {
  */
 export type EncryptedPassportElement = {
   /*
-   * Element type. One of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”, “phone_number”, “email”.
+   * Element type. One of "personal_details", "passport", "driver_license", "identity_card", "internal_passport", "address", "utility_bill", "bank_statement", "rental_agreement", "passport_registration", "temporary_registration", "phone_number", "email".
    */
   type: string;
   /*
-   * Optional. Base64-encoded encrypted Telegram Passport element data provided by the user, available for “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport” and “address” types. Can be decrypted and verified using the accompanying EncryptedCredentials.
+   * Optional. Base64-encoded encrypted Telegram Passport element data provided by the user, available for "personal_details", "passport", "driver_license", "identity_card", "internal_passport" and "address" types. Can be decrypted and verified using the accompanying EncryptedCredentials.
    */
   data?: string;
   /*
-   * Optional. User's verified phone number, available only for “phone_number” type
+   * Optional. User's verified phone number, available only for "phone_number" type
    */
   phone_number?: string;
   /*
-   * Optional. User's verified email address, available only for “email” type
+   * Optional. User's verified email address, available only for "email" type
    */
   email?: string;
   /*
-   * Optional. Array of encrypted files with documents provided by the user, available for “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration” types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
+   * Optional. Array of encrypted files with documents provided by the user, available for "utility_bill", "bank_statement", "rental_agreement", "passport_registration" and "temporary_registration" types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
    */
   files?: PassportFile[];
   /*
-   * Optional. Encrypted file with the front side of the document, provided by the user. Available for “passport”, “driver_license”, “identity_card” and “internal_passport”. The file can be decrypted and verified using the accompanying EncryptedCredentials.
+   * Optional. Encrypted file with the front side of the document, provided by the user. Available for "passport", "driver_license", "identity_card" and "internal_passport". The file can be decrypted and verified using the accompanying EncryptedCredentials.
    */
   front_side?: PassportFile;
   /*
-   * Optional. Encrypted file with the reverse side of the document, provided by the user. Available for “driver_license” and “identity_card”. The file can be decrypted and verified using the accompanying EncryptedCredentials.
+   * Optional. Encrypted file with the reverse side of the document, provided by the user. Available for "driver_license" and "identity_card". The file can be decrypted and verified using the accompanying EncryptedCredentials.
    */
   reverse_side?: PassportFile;
   /*
-   * Optional. Encrypted file with the selfie of the user holding a document, provided by the user; available for “passport”, “driver_license”, “identity_card” and “internal_passport”. The file can be decrypted and verified using the accompanying EncryptedCredentials.
+   * Optional. Encrypted file with the selfie of the user holding a document, provided by the user; available for "passport", "driver_license", "identity_card" and "internal_passport". The file can be decrypted and verified using the accompanying EncryptedCredentials.
    */
   selfie?: PassportFile;
   /*
-   * Optional. Array of encrypted files with translated versions of documents provided by the user. Available if requested for “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration” and “temporary_registration” types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
+   * Optional. Array of encrypted files with translated versions of documents provided by the user. Available if requested for "passport", "driver_license", "identity_card", "internal_passport", "utility_bill", "bank_statement", "rental_agreement", "passport_registration" and "temporary_registration" types. Files can be decrypted and verified using the accompanying EncryptedCredentials.
    */
   translation?: PassportFile[];
   /*
@@ -4270,7 +4262,7 @@ export type PassportElementErrorDataField = {
    */
   source: string;
   /*
-   * The section of the user's Telegram Passport which has the error, one of “personal_details”, “passport”, “driver_license”, “identity_card”, “internal_passport”, “address”
+   * The section of the user's Telegram Passport which has the error, one of "personal_details", "passport", "driver_license", "identity_card", "internal_passport", "address"
    */
   type: string;
   /*
@@ -4296,7 +4288,7 @@ export type PassportElementErrorFrontSide = {
    */
   source: string;
   /*
-   * The section of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”
+   * The section of the user's Telegram Passport which has the issue, one of "passport", "driver_license", "identity_card", "internal_passport"
    */
   type: string;
   /*
@@ -4318,7 +4310,7 @@ export type PassportElementErrorReverseSide = {
    */
   source: string;
   /*
-   * The section of the user's Telegram Passport which has the issue, one of “driver_license”, “identity_card”
+   * The section of the user's Telegram Passport which has the issue, one of "driver_license", "identity_card"
    */
   type: string;
   /*
@@ -4340,7 +4332,7 @@ export type PassportElementErrorSelfie = {
    */
   source: string;
   /*
-   * The section of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”
+   * The section of the user's Telegram Passport which has the issue, one of "passport", "driver_license", "identity_card", "internal_passport"
    */
   type: string;
   /*
@@ -4362,7 +4354,7 @@ export type PassportElementErrorFile = {
    */
   source: string;
   /*
-   * The section of the user's Telegram Passport which has the issue, one of “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
+   * The section of the user's Telegram Passport which has the issue, one of "utility_bill", "bank_statement", "rental_agreement", "passport_registration", "temporary_registration"
    */
   type: string;
   /*
@@ -4384,7 +4376,7 @@ export type PassportElementErrorFiles = {
    */
   source: string;
   /*
-   * The section of the user's Telegram Passport which has the issue, one of “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
+   * The section of the user's Telegram Passport which has the issue, one of "utility_bill", "bank_statement", "rental_agreement", "passport_registration", "temporary_registration"
    */
   type: string;
   /*
@@ -4406,7 +4398,7 @@ export type PassportElementErrorTranslationFile = {
    */
   source: string;
   /*
-   * Type of element of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
+   * Type of element of the user's Telegram Passport which has the issue, one of "passport", "driver_license", "identity_card", "internal_passport", "utility_bill", "bank_statement", "rental_agreement", "passport_registration", "temporary_registration"
    */
   type: string;
   /*
@@ -4428,7 +4420,7 @@ export type PassportElementErrorTranslationFiles = {
    */
   source: string;
   /*
-   * Type of element of the user's Telegram Passport which has the issue, one of “passport”, “driver_license”, “identity_card”, “internal_passport”, “utility_bill”, “bank_statement”, “rental_agreement”, “passport_registration”, “temporary_registration”
+   * Type of element of the user's Telegram Passport which has the issue, one of "passport", "driver_license", "identity_card", "internal_passport", "utility_bill", "bank_statement", "rental_agreement", "passport_registration", "temporary_registration"
    */
   type: string;
   /*
@@ -4442,7 +4434,7 @@ export type PassportElementErrorTranslationFiles = {
 };
 
 /*
- * Represents an issue in an unspecified place. The error is considered resolved when new data is added.Your bot can offer users HTML5 games to play solo or to compete against each other in groups and one-on-one chats. Create games via @BotFather using the /newgame command. Please note that this kind of power requires responsibility: you will need to accept the terms for each game that your bots will be offering.
+ * Represents an issue in an unspecified place. The error is considered resolved when new data is added.
  */
 export type PassportElementErrorUnspecified = {
   /*

@@ -10,16 +10,14 @@ export default class TelegramAPI {
 
   /*
    * Use this method to receive incoming updates using long polling (wiki). An Array of Update objects is returned.
-   * Notes1. This method will not work if an outgoing webhook is set up.2. In order to avoid getting duplicate updates, recalculate offset after each server response.
    */
-  getUpdates(parametros: TP.GetUpdatesParams): Promise<TP.Update[]> {
+  getUpdates(parametros: TP.GetUpdatesParams): Promise<any> {
     return new Requisicao(this.token, 'getUpdates').post(parametros);
   }
 
   /*
-   * Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.If you'd like to make sure that the Webhook request comes from Telegram, we recommend using a secret path in the URL, e.g. https://www.example.com/<token>. Since nobody else knows your bot's token, you can be pretty sure it's us.
-   * Notes1. You will not be able to receive updates using getUpdates for as long as an outgoing webhook is set up.2. To use a self-signed certificate, you need to upload your public key certificate using certificate parameter. Please upload as InputFile, sending a String will not work.3. Ports currently supported for Webhooks: 443, 80, 88, 8443.
-   * NEW! If you're having any trouble setting up webhooks, please check out this amazing guide to Webhooks.
+   * Use this method to specify a url and receive incoming updates via an outgoing webhook. Whenever there is an update for the bot, we will send an HTTPS POST request to the specified url, containing a JSON-serialized Update. In case of an unsuccessful request, we will give up after a reasonable amount of attempts. Returns True on success.
+   * If you'd like to make sure that the Webhook request comes from Telegram, we recommend using a secret path in the URL, e.g. https://www.example.com/<token>. Since nobody else knows your bot's token, you can be pretty sure it's us.
    */
   setWebhook(parametros: TP.SetWebhookParams): Promise<boolean> {
     return new Requisicao(this.token, 'setWebhook').post(parametros);
@@ -47,7 +45,7 @@ export default class TelegramAPI {
   }
 
   /*
-   * Use this method to send text messages. On success, the sent Message is returned.Formatting optionsThe Bot API supports basic formatting for messages. You can use bold, italic, underlined and strikethrough text, as well as inline links and pre-formatted code in your bots' messages. Telegram clients will render them accordingly. You can use either markdown-style or HTML-style formatting.Note that Telegram clients will display an alert to the user before opening an inline link ('Open this link?' together with the full URL).Message entities can be nested, providing following restrictions are met:- If two entities has common characters then one of them is fully contained inside another.- bold, italic, underline and strikethrough entities can contain and to be contained in any other entities, except pre and code.- All other entities can't contain each other.Links tg://user?id=<user_id> can be used to mention a user by their ID without using a username. Please note:To use this mode, pass MarkdownV2 in the parse_mode field. Use the following syntax in your message:Please note:To use this mode, pass HTML in the parse_mode field. The following tags are currently supported:Please note:This is a legacy mode, retained for backward compatibility. To use this mode, pass Markdown in the parse_mode field. Use the following syntax in your message:Please note:
+   * Use this method to send text messages. On success, the sent Message is returned.
    */
   sendMessage(parametros: TP.SendMessageParams): Promise<TP.Message> {
     return new Requisicao(this.token, 'sendMessage').post(parametros);
@@ -68,7 +66,8 @@ export default class TelegramAPI {
   }
 
   /*
-   * Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.For sending voice messages, use the sendVoice method instead.
+   * Use this method to send audio files, if you want Telegram clients to display them in the music player. Your audio must be in the .MP3 or .M4A format. On success, the sent Message is returned. Bots can currently send audio files of up to 50 MB in size, this limit may be changed in the future.
+   * For sending voice messages, use the sendVoice method instead.
    */
   sendAudio(parametros: TP.SendAudioParams): Promise<TP.Message> {
     return new Requisicao(this.token, 'sendAudio').post(parametros);
@@ -167,7 +166,7 @@ export default class TelegramAPI {
 
   /*
    * Use this method when you need to tell the user that something is happening on the bot's side. The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.
-   * Example: The ImageBot needs some time to process a request and upload the image. Instead of sending a text message along the lines of “Retrieving image, please wait…”, the bot may use sendChatAction with action = upload_photo. The user will see a “sending photo” status for the bot.
+   * Example: The ImageBot needs some time to process a request and upload the image. Instead of sending a text message along the lines of "Retrieving image, please wait...", the bot may use sendChatAction with action = upload_photo. The user will see a "sending photo" status for the bot.
    * We only recommend using this method when a response from the bot will take a noticeable amount of time to arrive.
    */
   sendChatAction(parametros: TP.SendChatActionParams): Promise<boolean> {
@@ -182,7 +181,7 @@ export default class TelegramAPI {
   }
 
   /*
-   * Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.Note: This function may not preserve the original file name and MIME type. You should save the file's MIME type and name (if available) when the File object is received.
+   * Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.
    */
   getFile(parametros: TP.GetFileParams): Promise<TP.File> {
     return new Requisicao(this.token, 'getFile').post(parametros);
@@ -232,7 +231,6 @@ export default class TelegramAPI {
 
   /*
    * Use this method to generate a new invite link for a chat; any previously generated link is revoked. The bot must be an administrator in the chat for this to work and must have the appropriate admin rights. Returns the new invite link as String on success.
-   * Note: Each administrator in a chat generates their own invite links. Bots can't use invite links generated by other administrators. If you want your bot to work with invite links, it will need to generate its own link using exportChatInviteLink — after this the link will become available to the bot via the getChat method. If your bot needs to generate a new invite link replacing its previous one, use exportChatInviteLink again.
    */
   exportChatInviteLink(parametros: TP.ExportChatInviteLinkParams): Promise<string> {
     return new Requisicao(this.token, 'exportChatInviteLink').post(parametros);
@@ -345,7 +343,7 @@ export default class TelegramAPI {
   }
 
   /*
-   * Use this method to get the current list of the bot's commands. Requires no parameters. Returns Array of BotCommand on success.Inline mode methodsMethods and objects used in the inline mode are described in the Inline mode section.The following methods allow you to change an existing message in the message history instead of sending a new one with a result of an action. This is most useful for messages with inline keyboards using callback queries, but can also help reduce clutter in conversations with regular chat bots.Please note, that it is currently only possible to edit messages without reply_markup or with inline keyboards.
+   * Use this method to get the current list of the bot's commands. Requires no parameters. Returns Array of BotCommand on success.
    */
   getMyCommands(): Promise<TP.BotCommand[]> {
     return new Requisicao(this.token, 'getMyCommands').get();
@@ -387,7 +385,7 @@ export default class TelegramAPI {
   }
 
   /*
-   * Use this method to delete a message, including service messages, with the following limitations:- A message can only be deleted if it was sent less than 48 hours ago.- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.- Bots can delete outgoing messages in private chats, groups, and supergroups.- Bots can delete incoming messages in private chats.- Bots granted can_post_messages permissions can delete outgoing messages in channels.- If the bot is an administrator of a group, it can delete any message there.- If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.Returns True on success.The following methods and objects allow your bot to handle stickers and sticker sets.
+   * Use this method to delete a message, including service messages, with the following limitations:- A message can only be deleted if it was sent less than 48 hours ago.- A dice message in a private chat can only be deleted if it was sent more than 24 hours ago.- Bots can delete outgoing messages in private chats, groups, and supergroups.- Bots can delete incoming messages in private chats.- Bots granted can_post_messages permissions can delete outgoing messages in channels.- If the bot is an administrator of a group, it can delete any message there.- If the bot has can_delete_messages permission in a supergroup or a channel, it can delete any message there.Returns True on success.
    */
   deleteMessage(parametros: TP.DeleteMessageParams): Promise<boolean> {
     return new Requisicao(this.token, 'deleteMessage').post(parametros);
@@ -443,7 +441,7 @@ export default class TelegramAPI {
   }
 
   /*
-   * Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns True on success.The following methods and objects allow your bot to work in inline mode.Please see our Introduction to Inline bots for more details.To enable this option, send the /setinline command to @BotFather and provide the placeholder text that the user will see in the input field after typing your bot's name.
+   * Use this method to set the thumbnail of a sticker set. Animated thumbnails can be set for animated sticker sets only. Returns True on success.
    */
   setStickerSetThumb(parametros: TP.SetStickerSetThumbParams): Promise<boolean> {
     return new Requisicao(this.token, 'setStickerSetThumb').post(parametros);
@@ -478,7 +476,8 @@ export default class TelegramAPI {
   }
 
   /*
-   * Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.
+   * Informs a user that some of the Telegram Passport elements they provided contains errors. The user will not be able to re-submit their Passport to you until the errors are fixed (the contents of the field for which you returned the error must change). Returns True on success.
+   * Use this if the data submitted by the user doesn't satisfy the standards your service requires for any reason. For example, if a birthday date seems invalid, a submitted document is blurry, a scan shows evidence of tampering, etc. Supply some details in the error message to make sure the user knows how to correct the issues.
    */
   setPassportDataErrors(parametros: TP.SetPassportDataErrorsParams): Promise<boolean> {
     return new Requisicao(this.token, 'setPassportDataErrors').post(parametros);
