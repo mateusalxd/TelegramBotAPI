@@ -7,7 +7,7 @@ Biblioteca com funcionalidades básicas da API de Bot do Telegram
 Instale a biblioteca direto do repositório.
 
 ```bash
-npm install https://github.com/mateusalxd/TelegramBotAPI.git
+npm install git+https://github.com/mateusalxd/TelegramBotAPI.git
 ```
 
 Em seguida você poderá usar a biblioteca conforme exemplo abaixo.
@@ -24,7 +24,7 @@ telegram
 
 ## Script utilizado no montagem
 
-Os arquivos `telegram-types` e `telegram-api` foram gerados praticamente com o script a seguir, por esse motivo podem existir bugs.
+Os arquivos `types` e `index` foram gerados praticamente com o script a seguir, por esse motivo podem existir bugs.
 
 **Importante**
 

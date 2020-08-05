@@ -1,4 +1,4 @@
-import { ResponseParameters } from './telegram-types';
+import { ResponseParameters } from './types';
 
 export type APIResponse = {
   ok: boolean;

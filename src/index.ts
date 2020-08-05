@@ -1,7 +1,7 @@
-import * as TP from './telegram-types';
+import * as TP from './types';
 import Requisicao from './requisicao';
 
-export default class TelegramAPI {
+export default class TelegramBotAPI {
   constructor(private token: string) {
     if (!token) {
       throw new Error('É necessário informar o token do bot');

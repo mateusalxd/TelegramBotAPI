@@ -2,9 +2,10 @@
   "name": "telegram-bot-api",
   "version": "1.0.4",
   "description": "Biblioteca com funcionalidades básicas da API de Bot do Telegram",
-  "main": "lib/telegram-api.js",
-  "types": "lib/telegram-api.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
+    "build:full": "npm run format && npm run lint && tsc",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
@@ -37,6 +38,6 @@
     "typescript": "^3.9.7"
   },
   "files": [
-    "/lib/**/*"
+    "./lib/**/*"
   ]
 }
