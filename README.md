@@ -7,7 +7,7 @@ Biblioteca com funcionalidades básicas da API de Bot do Telegram
 Instale a biblioteca direto do repositório.
 
 ```bash
-npm instal https://github.com/mateusalxd/TelegramBotAPI.git
+npm install https://github.com/mateusalxd/TelegramBotAPI.git
 ```
 
 Em seguida você poderá usar a biblioteca conforme exemplo abaixo.
@@ -120,7 +120,7 @@ function formatarTextoDocumentacao(texto) {
 }
 
 function formatarDocumentacao(documentacao) {
-  return `${documentacao ? `/*\n* ${formatarTextoDocumentacao(documentacao).replace('\n', '\n* ')}\n*/` : ''}`;
+  return `${documentacao ? `/**\n* ${formatarTextoDocumentacao(documentacao).replace('\n', '\n* ')}\n*/` : ''}`;
 }
 
 function formatarNomeTipoMetodo(nome) {
